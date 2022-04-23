@@ -1,14 +1,16 @@
 const express = require('express');
-const morgan = require('morgan');
+const boot = require('./bootstrap');
 
 const app = express();
 
-app.use(morgan('tiny'));
+// set general middlewares
+boot(app);
 
-app.use(() => {
-  console.log('hey');
+app.get('/', (req, res) => {
+  res.render('main', {
+    layout: false,
+    test: 'hey',
+  });
 });
-// body parser middleware
-app.use(express.json());
 
 module.exports = app;
