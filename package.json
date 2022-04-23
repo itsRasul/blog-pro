@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start:dev": "NODE_ENV=development nodemon server.js",
-    "start": "NODE_ENV=production node server.js"
+    "start:dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "author": "rasul",
   "license": "ISC",
@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "eslint": "^8.14.0",
+    "morgan": "^1.10.0",
     "prettier": "^2.6.2"
   }
 }
