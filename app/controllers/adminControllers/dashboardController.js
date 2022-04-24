@@ -5,7 +5,7 @@ exports.index = (req, res, next) => {
     totalViews: 0,
     totalPosts: 0,
   };
-  res.status(200).render('dashboard', {
+  res.status(200).render('admin/dashboard', {
     layout: 'admin',
     title: 'داشبورد بلاگ',
     dashboardActive: 'active',
