@@ -4,9 +4,11 @@ module.exports = {
     commonjs: true,
     es2021: true,
   },
-  extends: "eslint:recommended",
+  extends: 'eslint:recommended',
   parserOptions: {
-    ecmaVersion: "latest",
+    ecmaVersion: 'latest',
   },
-  rules: {},
+  rules: {
+    'no-unused-vars': [2, { args: 'after-used', argsIgnorePattern: 'next' }],
+  },
 };

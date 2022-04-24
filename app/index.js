@@ -1,16 +1,12 @@
 const express = require('express');
 const boot = require('./bootstrap');
+const initRoutes = require('./routes');
 
 const app = express();
 
 // set general middlewares
 boot(app);
 
-app.get('/', (req, res) => {
-  res.render('main', {
-    layout: false,
-    test: 'hey',
-  });
-});
+initRoutes(app);
 
 module.exports = app;

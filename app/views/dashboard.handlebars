@@ -1,0 +1,229 @@
+<!-- Page Headings Start -->
+<div class='row justify-content-between align-items-center mb-10'>
+
+  <!-- Page Heading Start -->
+  <div class='col-12 col-lg-auto mb-20'>
+    <div class='page-heading'>
+      <h3>داشبورد</h3>
+    </div>
+  </div><!-- Page Heading End -->
+
+</div><!-- Page Headings End -->
+
+<!-- Top Report Wrap Start -->
+<div class='row'>
+  <!-- Top Report Start -->
+  <div class='col-xlg-3 col-md-6 col-12 mb-30'>
+    <div class='top-report'>
+
+      <!-- Head -->
+      <div class='head'>
+        <h4>تعداد کاربران</h4>
+        <a href='#' class='view'><i class='zmdi zmdi-eye'></i></a>
+      </div>
+
+      <!-- Content -->
+      <div class='content'>
+        <h2>{{totalUsers}}</h2>
+      </div>
+
+      {{! <!-- Footer -->
+      <div class='footer'>
+        <div class='progess'>
+          <div class='progess-bar' style='width: 92%;'></div>
+        </div>
+        <p></p>
+      </div> }}
+
+    </div>
+  </div><!-- Top Report End -->
+
+  <!-- Top Report Start -->
+  <div class='col-xlg-3 col-md-6 col-12 mb-30'>
+    <div class='top-report'>
+
+      <!-- Head -->
+      <div class='head'>
+        <h4>تعداد مطالب</h4>
+        <a href='#' class='view'><i class='zmdi zmdi-eye'></i></a>
+      </div>
+
+      <!-- Content -->
+      <div class='content'>
+        <h2>{{totalPosts}}</h2>
+      </div>
+
+    </div>
+  </div><!-- Top Report End -->
+
+  <!-- Top Report Start -->
+  <div class='col-xlg-3 col-md-6 col-12 mb-30'>
+    <div class='top-report'>
+
+      <!-- Head -->
+      <div class='head'>
+        <h4>تعداد دیدگاه ها</h4>
+        <a href='#' class='view'><i class='zmdi zmdi-eye'></i></a>
+      </div>
+
+      <!-- Content -->
+      <div class='content'>
+        <h2>{{totalComments}}</h2>
+      </div>
+
+    </div>
+  </div><!-- Top Report End -->
+
+  <!-- Top Report Start -->
+  <div class='col-xlg-3 col-md-6 col-12 mb-30'>
+    <div class='top-report'>
+
+      <!-- Head -->
+      <div class='head'>
+        <h4>تعداد بازدید ها</h4>
+        <a href='#' class='view'><i class='zmdi zmdi-eye'></i></a>
+      </div>
+
+      <!-- Content -->
+      <div class='content'>
+        <h2>{{totalViews}}</h2>
+      </div>
+
+    </div>
+  </div><!-- Top Report End -->
+</div><!-- Top Report Wrap End -->
+
+<div class='row mbn-30'>
+
+  <div class='col-lg-6 col-12 mb-30'>
+    <div class='box'>
+      <div class='box-head'>
+        <h3 class='title'>آخرین دیدگاه ها</h3>
+      </div>
+      <div class='box-body'>
+        <div class='table-responsive'>
+          <table class='table'>
+            <!-- Table Head Start -->
+            <thead>
+              <tr>
+                <th>کاربر</th>
+                <th>دیدگاه</th>
+                {{! <th>پرداخت</th> }}
+              </tr>
+            </thead>
+            <!-- Table Head End -->
+
+            <!-- Table Body Start -->
+            <tbody>
+              <tr>
+                <td class='col-3 fw-600'>طاهر</td>
+                <td class='col-9'>
+                  <p
+                    style='max-width:600px'
+                    class='text-truncate col-5 overflow-hidden'
+                  >
+                    لورم ایپسوم متن ساختگی با تولید
+                    <br />سادگی نامفهوم از صنعت چاپ.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td class='col-3 fw-600'>طاهر</td>
+                <td class='col-9'>
+                  <p
+                    style='max-width:600px'
+                    class='text-truncate col-5 overflow-hidden'
+                  >
+                    لورم ایپسوم متن ساختگی با تولید
+                    <br />سادگی نامفهوم از صنعت چاپ.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td class='col-3 fw-600'>طاهر</td>
+                <td class='col-9'>
+                  <p
+                    style='max-width:600px'
+                    class='text-truncate col-5 overflow-hidden'
+                  >
+                    لورم ایپسوم متن ساختگی با تولید
+                    <br />سادگی نامفهوم از صنعت چاپ.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td class='col-3 fw-600'>طاهر</td>
+                <td class='col-9'>
+                  <p
+                    style='max-width:600px'
+                    class='text-truncate col-5 overflow-hidden'
+                  >
+                    لورم ایپسوم متن ساختگی با تولید
+                    <br />سادگی نامفهوم از صنعت چاپ.
+                  </p>
+                </td>
+              </tr>
+
+            </tbody>
+            <!-- Table Body End -->
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Form Wizard Horizontal Start-->
+  <div class='col-lg-6 col-12 mb-30'>
+    <div class='box'>
+      <div class='box-head'>
+        <h3 class='title'>فرم پیش نویس</h3>
+      </div>
+      <div class='box-body'>
+
+        <div class='smart-wizard'>
+
+          <div>
+            <div id='step-1'>
+              <form action='#'>
+                <div class='row mbn-20'>
+                  <div class='col-12 mb-20'><input
+                      type='text'
+                      placeholder='عنوان مطلب'
+                      class='form-control'
+                    /></div>
+                  <div class='col-12 mb-20'><textarea
+                      class='form-control'
+                      placeholder='محتوای مطلب'
+                    ></textarea></div>
+                  <div class='col-lg-6 col-12 mb-20'><input
+                      type='submit'
+                      class='button button-primary'
+                      value='ارسال'
+                    /></div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!--Form Wizard Horizontal End-->
+  <div class='col-lg-6 col-12 mb-30'>
+    <div class='box'>
+      <div class='box-head'>
+        <h3 class='title'>بازدید مطالب</h3>
+      </div>
+      <div class='boox-body'>
+        <canvas id='myChart-total-views'></canvas>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+{{! chart JS }}
+<script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
+<script src='/assets/js/adminJs/chart.js'></script>
