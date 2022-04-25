@@ -1,1 +1,46 @@
-<h1>this is posts</h1>
+<div class='row justify-content-end mb-20'>
+  <div class='col-2'>"
+    <a href='/admin/posts/newPost' class='button button-primary'>
+      + نوشتن مطلب جدید
+    </a>
+  </div>
+</div>
+
+<div class='col-12 mb-30'>
+  <div class='box'>
+    <div class='box-head'>
+      <h4 class='title'>لیست مطالب</h4>
+    </div>
+    <div class='box-body'>
+      <table class='table'>
+        <thead class='thead-dark'>
+          <tr>
+            <th>#</th>
+            <th>عنوان</th>
+            <th>نویسنده</th>
+            <th>تاریخ ایجاد</th>
+            <th>تعداد بازدید</th>
+            <th>عملیات</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each posts}}
+            <tr>
+              <th>{{@index}}</th>
+              <td>{{this.title}}</td>
+              <td>{{this.author_id}}</td>
+              <td>
+                {{this.created_at_readble}}
+              </td>
+              <td>{{this.views}}</td>
+              <td><button class='btn fa fa-pencil'></button><button
+                  class='btn fa fa-times'
+                ></button></td>
+            </tr>
+
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
