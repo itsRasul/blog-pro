@@ -16,6 +16,8 @@ module.exports = (app) => {
   app.use(express.static(path.join(__dirname, '../../public')));
   // bode-parser middleware
   app.use(express.json());
+  // parsing form data comming from front middleware
+  app.use(express.urlencoded({ extended: false }));
   // middleware to log every request comming from client
   app.use(morgan('dev'));
 };
