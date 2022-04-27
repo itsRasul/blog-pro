@@ -8,7 +8,14 @@
   </div><!-- Page Heading End -->
 
 </div><!-- Page Headings End -->
-
+{{#if hasError}}
+  {{#each errors}}
+    <div class='alert alert-outline-danger' role='alert'>
+      <i class='zmdi zmdi-info'></i>
+      {{this}}
+    </div>
+  {{/each}}
+{{/if}}
 <form action='' method='POST'>
   <div class='row'>
     <!--Form controls Start-->

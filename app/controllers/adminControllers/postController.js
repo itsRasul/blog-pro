@@ -1,3 +1,4 @@
+const postValidator = require('../../validators/postValidator');
 const Post = require('../../models/postModel');
 const User = require('../../models/userModel');
 const { toPersianDate } = require('@services/dateServices');
@@ -44,6 +45,21 @@ exports.createPost = async (req, res, next) => {
       content: req.body.content,
       status: req.body.status,
     };
+    // data validator (check everything not be empty!)
+    const errors = postValidator.notEmpty(data);
+    const admins = await User.findUsersAdmin();
+    if (errors.length > 0) {
+      // there is an Error
+      return res.status(200).render('admin/newPost', {
+        layout: 'admin',
+        title: 'نوشتن مطلب جدید',
+        postActive: 'active',
+        admins,
+        errors,
+        hasError: errors.length > 0,
+      });
+    }
+
     await Post.create(data);
     res.redirect('/admin/posts/page/1');
   } catch (err) {
