@@ -9,4 +9,10 @@ router
   .get(postController.newPostPage)
   .post(postController.createPost);
 
+router.route('/delete/:postId').get(postController.remove);
+
+router
+  .route('/edit/:postId')
+  .get(postController.editPage)
+  .post(postController.update);
 module.exports = router;

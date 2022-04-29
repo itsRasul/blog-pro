@@ -5,7 +5,6 @@ class ORM {
     this.modelName = modelName;
   }
   async find() {
-    console.log(this.modelName);
     const [results] = await db.query(`SELECT * FROM ${this.modelName}`);
     return results;
   }
