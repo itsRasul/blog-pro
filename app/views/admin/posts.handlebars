@@ -33,9 +33,13 @@
                 {{this.created_at_readble}}
               </td>
               <td>{{this.views}}</td>
-              <td><button class='btn fa fa-pencil'></button><button
+              <td><a
+                  href='/admin/posts/edit/{{this.id}}'
+                  class='btn fa fa-pencil'
+                ></a><a
+                  href='/admin/posts/delete/{{this.id}}'
                   class='btn fa fa-times'
-                ></button></td>
+                ></a></td>
             </tr>
 
           {{/each}}
