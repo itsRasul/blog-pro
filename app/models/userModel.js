@@ -13,6 +13,17 @@ class userModel extends ORM {
     console.log(admins);
     return admins;
   }
+
+  async find(page = 1, limit = 10) {
+    let skip = (page - 1) * 10;
+
+    const [results] = await db.query(`
+      SELECT * FROM users
+      ORDER BY created_at DESC
+      LIMIT ${skip},${limit}
+    `);
+    return results;
+  }
 }
 
 module.exports = new userModel('users');
