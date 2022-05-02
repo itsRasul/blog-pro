@@ -1,0 +1,93 @@
+<div class='row justify-content-between align-items-center mb-10'>
+
+  <!-- Page Heading Start -->
+  <div class='col-12 col-lg-auto mb-20'>
+    <div class='page-heading'>
+      <h3>فرم نوشتن مطلب جدید</h3>
+    </div>
+  </div><!-- Page Heading End -->
+
+</div><!-- Page Headings End -->
+{{#if hasError}}
+  {{#each errors}}
+    <div class='alert alert-outline-danger' role='alert'>
+      <i class='zmdi zmdi-info'></i>
+      {{this}}
+    </div>
+  {{/each}}
+{{/if}}
+<form action='' method='POST'>
+  <div class='row'>
+    <!--Form controls Start-->
+    <div class='col-12 mb-30'>
+      <div class='box'>
+        <div class='box-head'>
+          <h3 class='title'>مشخصات کاربر</h3>
+        </div>
+        <div class='box-body'>
+          <div class='row mbn-20 justify-content-start'>
+
+            <!--Form Field-->
+
+            <div class='row'>
+              <div class='col-8 mb-15'><input
+                  type='text'
+                  class='form-control'
+                  placeholder='نام کامل کاربر'
+                  name='full_name'
+                /></div>
+              <div class='w-100'></div>
+              <div class='col-8 mb-15'><input
+                  type='email'
+                  class='form-control'
+                  placeholder='ایمیل کاربر'
+                  name='email'
+                /></div>
+              <div class='w-100'></div>
+              <div class='col-8 mb-15'>
+                <input
+                  type='password'
+                  class='form-control'
+                  placeholder='کلمه عبور'
+                  name='password'
+                />
+              </div>
+            </div>
+            <!--Form Field-->
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Form controls End-->
+
+  </div>
+
+  <div class='row'>
+    <!--Form controls Start-->
+    <div class='col-12 mb-30'>
+      <div class='box'>
+        <div class='box-head'>
+          <h3 class='title'>نقش کاربری</h3>
+        </div>
+        <div class='box-body row justify-content-start flex-column'>
+          <!--Single Select-->
+          <div class='col-lg-3 col-12 mb-30'>
+            <select name='role' class='form-control status-select select2'>
+              <option value='0'>کاربری</option>
+              <option value='1'>نویسنده</option>
+              <option value='2'>مدیر</option>
+            </select>
+          </div>
+
+          <!--Single Select-->
+          <div class='col-12 col-lg-3 mb-30'>
+            <button class='button button-primary'>ذخیره سازی</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Form controls End-->
+
+  </div>
+</form>

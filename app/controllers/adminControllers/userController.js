@@ -35,3 +35,45 @@ exports.index = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.remove = catchAsync(async (req, res, next) => {
+  const { userId } = req.params;
+
+  const result = await User.deleteById(userId);
+  console.log(result);
+  if (result.affectedRows > 0) {
+    // we have removed a user successfully!
+    res.redirect('/admin/users');
+  }
+  res.render('errors/error', {
+    errorMsg: 'کاربری با این id یافت نشد!',
+    errorStatusCode: 404,
+  });
+});
+
+exports.createUserPage = catchAsync(async (req, res, next) => {
+  res.status(200).render('admin/newUser', {
+    layout: 'admin',
+    userActive: 'active',
+    title: 'ایجاد کاربر جدید',
+  });
+});
+
+exports.create = catchAsync(async (req, res, next) => {
+  const userDate = {
+    full_name: req.body.full_name,
+    email: req.body.email,
+    password: req.body.password,
+    role: req.body.role,
+  };
+
+  const result = await User.create(userDate);
+  console.log(result);
+  if (result.affectedRows > 0) {
+    return res.redirect('/admin/users');
+  }
+  return res.render('errors/error', {
+    errorMsg: 'در ایجاد کاربر مشکلی پیش آمده است!',
+    errorStatusCode: 400,
+  });
+});
