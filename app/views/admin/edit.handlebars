@@ -88,7 +88,14 @@
           <div class='col-lg-3 col-12 mb-30'>
             <select name='author_id' class='form-control select2'>
               {{#each admins}}
-                <option value='{{this.id}}'>{{this.full_name}}</option>
+                {{#isAuthorPost this.id}}
+                  <option value='{{this.id}}'>{{this.full_name}}</option>
+                {{else}}
+                  <option
+                    value='{{this.id}}'
+                    selected
+                  >{{this.full_name}}</option>
+                {{/isAuthorPost}}
               {{/each}}
             </select>
           </div>

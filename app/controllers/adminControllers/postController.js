@@ -6,7 +6,8 @@ const User = require('../../models/userModel');
 const { toPersianDate } = require('@services/dateServices');
 
 exports.index = async (req, res, next) => {
-  const { page } = req.params;
+  let { page } = req.params;
+  page = page ? page : 1;
   const posts = await Post.findAllPostsWithAuthorName(page, 10);
   const count = await Post.countPosts();
   const pages = Math.ceil(count / 10);
@@ -25,6 +26,11 @@ exports.index = async (req, res, next) => {
     nextPage: Number(page) + 1,
     prePage: page - 1,
     currentPage: page,
+    helpers: {
+      ifCond: function (v1, options) {
+        return v1 == Number(page) ? options.fn(this) : options.inverse(this);
+      },
+    },
   });
 };
 
@@ -88,13 +94,22 @@ exports.editPage = async (req, res, next) => {
   const { postId } = req.params;
 
   const [post] = await Post.findById(postId);
+  const authorPost = await User.findById(post.author_id);
+  console.log({ authorPost });
   const admins = await User.findUsersAdmin();
+  console.log({ admins });
+  console.log({ post });
   res.status(200).render('admin/edit', {
     layout: 'admin',
     title: 'نوشتن مطلب جدید',
     postActive: 'active',
     admins,
     post,
+    helpers: {
+      isAuthorPost: function (v1, options) {
+        return v1 == authorPost.id ? options.fn(this) : options.inverse(this);
+      },
+    },
   });
 };
 
