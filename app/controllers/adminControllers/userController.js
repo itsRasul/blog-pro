@@ -77,3 +77,23 @@ exports.create = catchAsync(async (req, res, next) => {
     errorStatusCode: 400,
   });
 });
+
+exports.editUserPage = catchAsync(async (req, res, next) => {
+  const { userId } = req.params;
+  const [user] = await User.findById(userId);
+  console.log(user);
+  res.render('admin/editUser', {
+    layout: 'admin',
+    title: 'ویرایش کاربر',
+    userActive: 'active',
+    full_name: user.full_name,
+    email: user.email,
+    role: user.role,
+    password: user.password,
+    helpers: {
+      isRoleUser: function (v1, options) {
+        return v1 == user.role ? options.fn(this) : options.inverse(this);
+      },
+    },
+  });
+});
