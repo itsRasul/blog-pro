@@ -12,6 +12,9 @@ router
   .get(userController.createUserPage)
   .post(userController.create);
 
-router.route('/edit/:userId').get(userController.editUserPage);
+router
+  .route('/edit/:userId')
+  .get(userController.editUserPage)
+  .post(userController.edit);
 
 module.exports = router;

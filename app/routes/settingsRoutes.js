@@ -3,6 +3,9 @@ const settingController = require('../controllers/adminControllers/settingContro
 
 const router = express.Router();
 
-router.route('/').get(settingController.index);
+router
+  .route('/')
+  .get(settingController.index)
+  .post(settingController.updateSetting);
 
 module.exports = router;

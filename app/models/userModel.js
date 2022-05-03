@@ -14,11 +14,13 @@ class userModel extends ORM {
     return admins;
   }
 
-  async find(page = 1, limit = 10) {
+  async find(page = 1, limit = 10, typeUsers) {
     let skip = (page - 1) * 10;
-
+    // typeUsers = role
+    console.log(typeUsers);
     const [results] = await db.query(`
       SELECT * FROM users
+      WHERE ${typeUsers ? `role = ${typeUsers}` : `TRUE`}
       ORDER BY created_at DESC
       LIMIT ${skip},${limit}
     `);

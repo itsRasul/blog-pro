@@ -4,10 +4,14 @@ const catchAsync = require('../../services/catchAsync');
 const { toPersianDate } = require('../../services/dateServices');
 
 exports.index = catchAsync(async (req, res, next) => {
-  let { page = 1 } = req.query;
+  let { page = 1, typeUsers } = req.query;
 
-  const users = await User.find(page, 10);
-
+  const users = await User.find(page, 10, typeUsers);
+  users.forEach((user) => {
+    if (user.role == 0) user.role_name = 'کاربری';
+    else if (user.role == 1) user.role_name = 'نویسنده';
+    else if (user.role == 2) user.role_name = 'ادمین';
+  });
   users.forEach((el) => {
     el.created_at_readable = toPersianDate(el.created_at);
   });
@@ -60,14 +64,14 @@ exports.createUserPage = catchAsync(async (req, res, next) => {
 });
 
 exports.create = catchAsync(async (req, res, next) => {
-  const userDate = {
+  const userData = {
     full_name: req.body.full_name,
     email: req.body.email,
     password: req.body.password,
     role: req.body.role,
   };
 
-  const result = await User.create(userDate);
+  const result = await User.create(userData);
   console.log(result);
   if (result.affectedRows > 0) {
     return res.redirect('/admin/users');
@@ -90,10 +94,32 @@ exports.editUserPage = catchAsync(async (req, res, next) => {
     email: user.email,
     role: user.role,
     password: user.password,
+    userId: user.id,
     helpers: {
       isRoleUser: function (v1, options) {
         return v1 == user.role ? options.fn(this) : options.inverse(this);
       },
     },
+  });
+});
+
+exports.edit = catchAsync(async (req, res, next) => {
+  const { userId } = req.params;
+  const userData = {
+    full_name: req.body.full_name,
+    email: req.body.email,
+    password: req.body.password,
+    role: req.body.role,
+  };
+
+  const result = await User.updateById(userId, userData);
+  if (result.affectedRows > 0) {
+    return res.redirect('/admin/users');
+  }
+  res.render('errors/error', {
+    layout: 'error',
+    title: 'error',
+    errorMsg: 'در ویرایش کاربر مشکلی پیش آمده است!',
+    errorStatusCode: 400,
   });
 });
