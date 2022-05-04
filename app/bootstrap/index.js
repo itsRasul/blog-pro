@@ -6,7 +6,7 @@ const morgan = require('morgan');
 
 module.exports = (app) => {
   // template engine middleware => define a template engine
-  app.engine('handlebars', handlebars.engine());
+  app.engine('handlebars', handlebars());
   // template engine middleware => set handlebars template engine for this project
   app.set('view engine', 'handlebars');
   // views directory

@@ -1,7 +1,9 @@
+const { hashPassword } = require('../../services/hashPassword');
 const User = require('../../models/userModel');
 const catchAsync = require('../../services/catchAsync');
 // const AppError = require('../../services/AppError');
 const { toPersianDate } = require('../../services/dateServices');
+const AppError = require('../../services/AppError');
 
 exports.index = catchAsync(async (req, res, next) => {
   let { page = 1, typeUsers } = req.query;
@@ -64,10 +66,13 @@ exports.createUserPage = catchAsync(async (req, res, next) => {
 });
 
 exports.create = catchAsync(async (req, res, next) => {
+  if (req.body.password) {
+    var hashPass = await hashPassword(req.body.password);
+  }
   const userData = {
     full_name: req.body.full_name,
     email: req.body.email,
-    password: req.body.password,
+    password: hashPass,
     role: req.body.role,
   };
 
@@ -93,7 +98,6 @@ exports.editUserPage = catchAsync(async (req, res, next) => {
     full_name: user.full_name,
     email: user.email,
     role: user.role,
-    password: user.password,
     userId: user.id,
     helpers: {
       isRoleUser: function (v1, options) {
@@ -105,10 +109,14 @@ exports.editUserPage = catchAsync(async (req, res, next) => {
 
 exports.edit = catchAsync(async (req, res, next) => {
   const { userId } = req.params;
+  if (!req.body.password) {
+    throw new AppError('لطفا رمز عبور را وارد نمایید', 400);
+  }
+  const hashPass = await hashPassword(req.body.password);
   const userData = {
     full_name: req.body.full_name,
     email: req.body.email,
-    password: req.body.password,
+    password: hashPass,
     role: req.body.role,
   };
 

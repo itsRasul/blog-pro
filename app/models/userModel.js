@@ -26,6 +26,18 @@ class userModel extends ORM {
     `);
     return results;
   }
+
+  async findByEmail(email) {
+    const [result] = await db.query(
+      `
+      SELECT * FROM users
+      WHERE email = ?
+      LIMIT 1
+    `,
+      [email]
+    );
+    return result.length > 0 ? result[0] : false;
+  }
 }
 
 module.exports = new userModel('users');
